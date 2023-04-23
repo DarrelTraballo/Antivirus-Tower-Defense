@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faaf73248fbc4ea4ab3950e0216b0cd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5f5c46293ce964d94d9e8221a107de, type: 3}
   m_Name: Virus1
   m_EditorClassIdentifier: 
+  unitName: Virus1
+  unitDescription: 
   unitType: 2
-  unitPrefab: {fileID: 0}
+  unitPrefab: {fileID: 2167948401493790071, guid: a613bfced9e850b4da2f74a07156603e, type: 3}

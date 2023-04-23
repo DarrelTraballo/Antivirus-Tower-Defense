@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8265051064986170744}
   m_Layer: 0
   m_Name: This_PC
-  m_TagString: Untagged
+  m_TagString: This_PC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupiedTile: {fileID: 0}
   unitType: 0
+  antivirusData: {fileID: 11400000, guid: f1e127608ff1bbd49940158796ecf0dd, type: 2}

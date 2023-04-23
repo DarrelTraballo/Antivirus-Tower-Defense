@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,12 +12,12 @@ public class GridManager : MonoBehaviour {
     [SerializeField] private Transform gridArea;
     [SerializeField] private ThisPC thisPC;
 
-    private Dictionary<Vector2 , Tile> tiles;
+    private Dictionary<Vector2, Tile> tiles;
 
     private Vector3 cameraOffset;
 
     private Vector2 offset;
-    private float tileSize = 1f;
+    private readonly float tileSize = 1f;
 
     private void Awake() {
         Instance = this;
@@ -27,11 +26,11 @@ public class GridManager : MonoBehaviour {
     }
 
     public void GenerateGrid() {
-        tiles = new Dictionary<Vector2 , Tile>();
+        tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity, gridArea);
-                
+
                 spawnedTile.name = $"({x}, {y})";
 
                 var isOffset = (x + y) % 2 == 1;

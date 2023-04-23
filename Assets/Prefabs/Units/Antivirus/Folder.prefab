@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupiedTile: {fileID: 0}
   unitType: 1
+  antivirusData: {fileID: 11400000, guid: 68aaae534ba1e27449574620bb2d4b2d, type: 2}

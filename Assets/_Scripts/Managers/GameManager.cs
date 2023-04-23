@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -13,12 +10,13 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        ChangeState(GameState.GenerateGrid);
     }
 
     public void Start() {
-        ChangeState(GameState.GenerateGrid);
+
     }
-    
+
     public void ChangeState(GameState newState) {
         state = newState;
 
@@ -30,6 +28,8 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.WaveStartState:
                 break;
+            case GameState.KillWaveState:
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour {
 }
 
 public enum GameState {
-    GenerateGrid,
-    PreparationState,
-    WaveStartState
+    GenerateGrid,           // setting up the game environment
+    PreparationState,       // player sets up shit
+    WaveStartState,         // enemies start spawning
+    KillWaveState,          // player kills enemies
 }

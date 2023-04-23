@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour {
@@ -7,7 +5,7 @@ public class Tile : MonoBehaviour {
     [SerializeField] private new SpriteRenderer renderer;
     [SerializeField] private GameObject highlight;
 
-    public BaseUnit occupiedUnit;
+    public AntivirusBase occupiedUnit;
     private bool dragging;
 
     private Vector2 mousePos;
@@ -49,9 +47,9 @@ public class Tile : MonoBehaviour {
         // if clicked on an occupied tile
         if (occupiedUnit != null) {
             dragging = true;
-            Debug.Log(occupiedUnit);
+            //Debug.Log(occupiedUnit);
             if (occupiedUnit.unitType == UnitType.ThisPC || occupiedUnit.unitType == UnitType.Antivirus) {
-                unitManager.SetSelectedAntivirus((BaseAntivirus) occupiedUnit);
+                unitManager.SetSelectedAntivirus(occupiedUnit);
             }
         }
 
@@ -65,8 +63,6 @@ public class Tile : MonoBehaviour {
         mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (occupiedUnit != null) {
             if (unitManager.selectedAntivirus != null) {
-                // if clicked a unit beforehand
-
                 // move the unit
                 var droppedTile = gridManager.GetTileAtPosition(mousePos);
                 SetUnit(unitManager.selectedAntivirus, droppedTile);
@@ -76,7 +72,7 @@ public class Tile : MonoBehaviour {
             }
         }
     }
-    public void SetUnit(BaseUnit unit, Tile tile) {
+    public void SetUnit(AntivirusBase unit, Tile tile) {
         if (unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
         unit.transform.position = tile.transform.position;
         tile.occupiedUnit = unit;
