@@ -63,12 +63,20 @@ public class Tile : MonoBehaviour {
         mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (occupiedUnit != null) {
             if (unitManager.selectedAntivirus != null) {
+                // check if out of bounds
+                if (mousePos.y < 0 || mousePos.y > GridManager.Instance.Height || mousePos.x < 0 || mousePos.x > GridManager.Instance.Width) {
+                    SetUnit(unitManager.selectedAntivirus, occupiedUnit.occupiedTile);
+                    unitManager.SetSelectedAntivirus(null);
+                    dragging = false;
+                    return;
+                }
                 // move the unit
                 var droppedTile = gridManager.GetTileAtPosition(mousePos);
                 SetUnit(unitManager.selectedAntivirus, droppedTile);
 
                 unitManager.SetSelectedAntivirus(null);
                 dragging = false;
+
             }
         }
     }

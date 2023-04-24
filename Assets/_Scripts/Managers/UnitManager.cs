@@ -9,6 +9,8 @@ public class UnitManager : MonoBehaviour {
 
     public AntivirusBase selectedAntivirus;
 
+    private UnitManager() { }
+
     private void Awake() {
         Instance = this;
 

@@ -21,6 +21,12 @@ public class Virus1 : VirusBase {
         Pathfind();
     }
 
+    /* 
+     * TODO: need to try A* on this instead of just moving towards the player
+     *       to force enemies to pathfind around defenses set by players
+     *       one big problem of this gameplay-wise is players could just cheese the entire game by
+     *       trapping enemies inside a cage of defenses.
+     */
     public override void Pathfind() {
         if (target != null) {
             distance = Vector2.Distance(transform.position, target.position);

@@ -5,12 +5,12 @@ using UnityEngine;
 public class GridManager : MonoBehaviour {
     public static GridManager Instance;
 
-    [SerializeField] private int width, height;
+    [SerializeField] public int Width { get; private set; } = 20;
+    [SerializeField] public int Height { get; private set; } = 9;
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Transform cam;
     [SerializeField] private Transform Wallpaper;
     [SerializeField] private Transform gridArea;
-    [SerializeField] private ThisPC thisPC;
 
     private Dictionary<Vector2, Tile> tiles;
 
@@ -19,16 +19,22 @@ public class GridManager : MonoBehaviour {
     private Vector2 offset;
     private readonly float tileSize = 1f;
 
+    private Dictionary<Vector2, Tile> taskBarTiles;
+    private int taskBarWidth = 20, taskBarHeight = 1;
+    [SerializeField] private Transform taskBarArea;
+
+    private GridManager() { }
+
     private void Awake() {
         Instance = this;
-        cameraOffset = new Vector3((float) width / 2 - 0.5f, ((float) height / 2 - 0.5f) - 1f, -10);
-        Wallpaper.transform.position = new Vector3((float) width / 2 - 0.5f, ((float) height / 2 - 0.5f) - 1f, 10);
+        cameraOffset = new Vector3((float) Width / 2 - 0.5f, ((float) Height / 2 - 0.5f) - 1f, -10);
+        Wallpaper.transform.position = new Vector3((float) Width / 2 - 0.5f, ((float) Height / 2 - 0.5f) - 1f, 10);
     }
 
     public void GenerateGrid() {
         tiles = new Dictionary<Vector2, Tile>();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < Width; x++) {
+            for (int y = 0; y < Height; y++) {
                 var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity, gridArea);
 
                 spawnedTile.name = $"({x}, {y})";
@@ -46,6 +52,23 @@ public class GridManager : MonoBehaviour {
         GameManager.Instance.ChangeState(GameState.PreparationState);
     }
 
+    public void GenerateTaskbarGrid() {
+        taskBarTiles = new Dictionary<Vector2, Tile>();
+        taskBarArea.gameObject.SetActive(true);
+
+        for (int x = 0; x < taskBarWidth; x++) {
+            for (int y = 0; y < taskBarHeight; y++) {
+                var taskBarTile = Instantiate(tilePrefab, new Vector3(x, y - 2f, 0), Quaternion.identity, taskBarArea);
+                taskBarTile.name = $"Taskbar ({x}, {y})";
+
+                var isOffset = (x + y) % 2 == 1;
+                taskBarTile.Init(isOffset);
+
+                taskBarTiles[new Vector2(x, y)] = taskBarTile;
+            }
+        }
+    }
+
     public Tile GetTileAtPosition(Vector2 position) {
         Vector2 gridPos = (position - offset) / tileSize;
         Vector2Int key = new Vector2Int(Mathf.RoundToInt(gridPos.x), Mathf.RoundToInt(gridPos.y));
@@ -56,6 +79,6 @@ public class GridManager : MonoBehaviour {
     }
 
     public Tile GetThisPCSpawnTile() {
-        return tiles.Where(t => t.Key.x == 0f && t.Key.y == height - 1).First().Value;
+        return tiles.Where(t => t.Key.x == 0f && t.Key.y == Height - 1).First().Value;
     }
 }

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
         switch (newState) {
             case GameState.GenerateGrid:
                 GridManager.Instance.GenerateGrid();
+                GridManager.Instance.GenerateTaskbarGrid();
                 break;
             case GameState.PreparationState:
                 break;
