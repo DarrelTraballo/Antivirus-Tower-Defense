@@ -17,7 +17,7 @@ public class GridManager : MonoBehaviour {
     private Vector3 cameraOffset;
 
     private Vector2 offset;
-    private readonly float tileSize = 1f;
+    public readonly float tileSize = 1f;
 
     private Dictionary<Vector2, Tile> taskBarTiles;
     private int taskBarWidth = 20, taskBarHeight = 1;

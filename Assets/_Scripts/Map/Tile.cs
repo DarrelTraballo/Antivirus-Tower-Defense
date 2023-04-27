@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour {
     private void Update() {
         if (!dragging) return;
 
-        mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = GetMousePosition();
 
         if (occupiedUnit != null) {
             occupiedUnit.transform.position = mousePos;
@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour {
     }
     private void OnMouseDown() {
         //if (gameManager.state != GameState.PreparationState) return;
-        mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = GetMousePosition();
         // if clicked on an occupied tile
         if (occupiedUnit != null) {
             dragging = true;
@@ -64,7 +64,9 @@ public class Tile : MonoBehaviour {
         if (occupiedUnit != null) {
             if (unitManager.selectedAntivirus != null) {
                 // check if out of bounds
-                if (mousePos.y < 0 || mousePos.y > GridManager.Instance.Height || mousePos.x < 0 || mousePos.x > GridManager.Instance.Width) {
+                bool isMouseOutOfBounds = mousePos.y < 0 - (GridManager.Instance.tileSize / 2) || mousePos.y > GridManager.Instance.Height || mousePos.x < 0 - (GridManager.Instance.tileSize / 2) || mousePos.x > GridManager.Instance.Width;
+
+                if (isMouseOutOfBounds) {
                     SetUnit(unitManager.selectedAntivirus, occupiedUnit.occupiedTile);
                     unitManager.SetSelectedAntivirus(null);
                     dragging = false;
@@ -85,5 +87,9 @@ public class Tile : MonoBehaviour {
         unit.transform.position = tile.transform.position;
         tile.occupiedUnit = unit;
         unit.occupiedTile = tile;
+    }
+
+    private Vector2 GetMousePosition() {
+        return (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

@@ -18,7 +18,9 @@ public class Virus1 : VirusBase {
     }
 
     private void Update() {
-        Pathfind();
+        if (target != null) {
+            Pathfind();
+        }
     }
 
     /* 
@@ -26,7 +28,15 @@ public class Virus1 : VirusBase {
      *       to force enemies to pathfind around defenses set by players
      *       one big problem of this gameplay-wise is players could just cheese the entire game by
      *       trapping enemies inside a cage of defenses.
+     *       
+     *       OR
+     *       
+     *       viruses colliding with antivirus units => both units take damage
+     *       antivirus units will always deal 1 damage on collision with a virus unit, 
+     *       virus units will always deal how much damage is set to them initially.
+     *       
      */
+
     public override void Pathfind() {
         if (target != null) {
             distance = Vector2.Distance(transform.position, target.position);
@@ -34,8 +44,7 @@ public class Virus1 : VirusBase {
             dir.Normalize();
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-            transform.position = Vector2.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
 
             if (distance <= 0) {
                 Destroy(gameObject);

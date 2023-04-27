@@ -330,8 +330,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241907451
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.06666667, g: 0.16470589, b: 0.19215687, a: 1}
@@ -1650,8 +1650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca914e4eedf69345ab3db21f66714c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
-  height: 9
   tilePrefab: {fileID: 5521004480125928339, guid: c9595b25dce51b048876fe293df054d5, type: 3}
   cam: {fileID: 519420032}
   Wallpaper: {fileID: 1696550361}
@@ -1817,7 +1815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696550361}
   - component: {fileID: 1696550360}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: wallpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1862,12 +1860,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -862508765
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8e8b6cff3dccc574fafe67d2d58d696e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1dcd2e3766fd5b48bbed4251dd0ae53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 19.2, y: 10.8}
@@ -1884,7 +1882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696550359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.07, y: 1.07, z: 1.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2041,7 +2039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1794287274
 Transform:
   m_ObjectHideFlags: 0
@@ -2203,7 +2201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087340253}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GridArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

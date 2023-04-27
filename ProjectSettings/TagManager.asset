@@ -13,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Virus
+  - Antivirus
   - 
   - 
   - 
@@ -42,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wallpaper
+    uniqueID: 3432458531
+    locked: 0
+  - name: Taskbar
+    uniqueID: 241907451
+    locked: 0
+  - name: Virus
+    uniqueID: 1705165665
+    locked: 0
+  - name: Antivirus
+    uniqueID: 3073899885
+    locked: 0
+  - name: Bullets
+    uniqueID: 3934079215
+    locked: 0
+  - name: UI
+    uniqueID: 2482767875
     locked: 0
