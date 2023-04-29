@@ -15,4 +15,6 @@ MonoBehaviour:
   unitName: Virus1
   unitDescription: 
   unitType: 2
-  unitPrefab: {fileID: 2167948401493790071, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
+  unitPrefab: {fileID: 3977317871175301717, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
+  health: 0
+  speed: 0

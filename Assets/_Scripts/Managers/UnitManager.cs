@@ -8,6 +8,7 @@ public class UnitManager : MonoBehaviour {
     private List<AntivirusData> units;
 
     public AntivirusBase selectedAntivirus;
+    public TaskBarButton SelectedAntivirusButton { get; private set; }
 
     private UnitManager() { }
 
@@ -17,12 +18,23 @@ public class UnitManager : MonoBehaviour {
         units = Resources.LoadAll<AntivirusData>("Units").ToList();
     }
 
-    public void BuildTurret() {
-        var turret = GetUnit(UnitType.Antivirus);
-        var spawnedTurret = Instantiate(turret);
+    public void BuildAntivirus() {
+        //var turret = GetUnit(UnitType.Antivirus);
+        if (SelectedAntivirusButton == null) return;
+        var spawnedTurret = Instantiate(SelectedAntivirusButton.AntivirusPrefab);
         var tile = GridManager.Instance.GetTileAtPosition((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         tile.SetUnit(spawnedTurret, tile);
+
+        BuyAntivirus();
+    }
+
+    public void PickAntivirus(TaskBarButton taskBarButton) {
+        this.SelectedAntivirusButton = taskBarButton;
+    }
+
+    public void BuyAntivirus() {
+        SelectedAntivirusButton = null;
     }
 
     public void PlaceThisPC() {

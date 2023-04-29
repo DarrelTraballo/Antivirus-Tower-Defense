@@ -54,7 +54,7 @@ public class Tile : MonoBehaviour {
 
         // if clicked on an empty tile
         else {
-            unitManager.BuildTurret();
+            unitManager.BuildAntivirus();
         }
     }
 
@@ -87,6 +87,7 @@ public class Tile : MonoBehaviour {
         unit.transform.position = tile.transform.position;
         tile.occupiedUnit = unit;
         unit.occupiedTile = tile;
+        unit.transform.SetParent(tile.transform);
     }
 
     private Vector2 GetMousePosition() {

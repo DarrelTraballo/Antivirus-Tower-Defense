@@ -19,6 +19,9 @@ public class WaveSpawner : MonoBehaviour {
 
     private float searchCountdown = 1f;
 
+    [SerializeField]
+    private Transform parent;
+
 
     private GameManager gameManager;
 
@@ -74,7 +77,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private void SpawnEnemy(Transform enemy) {
         Transform chosenSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(enemy, chosenSpawnPoint.position, chosenSpawnPoint.rotation);
+        Instantiate(enemy, chosenSpawnPoint.position, chosenSpawnPoint.rotation, parent);
 
         //Debug.Log("Spawning shitters");
     }

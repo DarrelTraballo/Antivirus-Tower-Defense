@@ -54,7 +54,7 @@ public class GridManager : MonoBehaviour {
 
     public void GenerateTaskbarGrid() {
         taskBarTiles = new Dictionary<Vector2, Tile>();
-        taskBarArea.gameObject.SetActive(true);
+        //taskBarArea.gameObject.SetActive(true);
 
         for (int x = 0; x < taskBarWidth; x++) {
             for (int y = 0; y < taskBarHeight; y++) {

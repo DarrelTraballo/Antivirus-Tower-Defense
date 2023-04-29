@@ -49,8 +49,8 @@ TagManager:
   - name: Taskbar
     uniqueID: 241907451
     locked: 0
-  - name: Virus
-    uniqueID: 1705165665
+  - name: UI
+    uniqueID: 2482767875
     locked: 0
   - name: Antivirus
     uniqueID: 3073899885
@@ -58,6 +58,6 @@ TagManager:
   - name: Bullets
     uniqueID: 3934079215
     locked: 0
-  - name: UI
-    uniqueID: 2482767875
+  - name: Virus
+    uniqueID: 1705165665
     locked: 0
