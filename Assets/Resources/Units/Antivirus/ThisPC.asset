@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: This PC
   unitDescription: 
+  unitType: 0
   unitPrefab: {fileID: 8265051064986170744, guid: 0dbfed4c67c906c45b53ee8614e5ce91, type: 3}
+  health: 500
+  range: 0
+  fireRate: 0

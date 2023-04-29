@@ -16,3 +16,6 @@ MonoBehaviour:
   unitDescription: 
   unitType: 1
   unitPrefab: {fileID: 7969573197199201849, guid: 11a277600ed9c98428abfef352eefb2f, type: 3}
+  health: 75
+  range: 0
+  fireRate: 0

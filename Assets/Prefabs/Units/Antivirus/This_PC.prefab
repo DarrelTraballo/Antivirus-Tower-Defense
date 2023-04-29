@@ -100,3 +100,4 @@ MonoBehaviour:
   occupiedTile: {fileID: 0}
   unitType: 0
   antivirusData: {fileID: 11400000, guid: f1e127608ff1bbd49940158796ecf0dd, type: 2}
+  antiVirusData: {fileID: 11400000, guid: f1e127608ff1bbd49940158796ecf0dd, type: 2}

@@ -9,6 +9,7 @@ public class AntivirusData : ScriptableObject {
     public UnitType unitType;
     public AntivirusBase unitPrefab;
 
-    public int health;
+    public float health;
     public float range;
+    public float fireRate;
 }

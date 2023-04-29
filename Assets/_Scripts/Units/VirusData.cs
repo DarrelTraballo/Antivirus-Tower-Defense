@@ -9,6 +9,7 @@ public class VirusData : ScriptableObject {
     public UnitType unitType;
     public VirusBase unitPrefab;
 
-    public int health;
+    public float health;
     public float speed;
+    public Transform Target { get; private set; }
 }

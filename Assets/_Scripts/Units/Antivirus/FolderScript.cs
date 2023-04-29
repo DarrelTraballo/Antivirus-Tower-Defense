@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class FolderScript: AntivirusBase { 
-    
+public class FolderScript : AntivirusBase {
+    public override void FindTarget() {
+        throw new System.NotImplementedException();
+    }
 }

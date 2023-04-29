@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Virus1 : VirusBase {
 
-    private Transform target;
+    //private Transform target;
     private float distance;
 
     private void Start() {

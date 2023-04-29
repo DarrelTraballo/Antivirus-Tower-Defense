@@ -18,6 +18,7 @@ public class WaveSpawner : MonoBehaviour {
     public float waveCountdown;
 
     private float searchCountdown = 1f;
+    private string virusTag = "Virus";
 
     [SerializeField]
     private Transform parent;
@@ -101,7 +102,7 @@ public class WaveSpawner : MonoBehaviour {
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0) {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null) {
+            if (GameObject.FindGameObjectWithTag(virusTag) == null) {
                 return false;
             }
         }
