@@ -16,4 +16,6 @@ public class TaskBarManager : MonoBehaviour {
 
     // start_icon | search_icon | new_folder | tower_1 | tower_2
 
+
+
 }

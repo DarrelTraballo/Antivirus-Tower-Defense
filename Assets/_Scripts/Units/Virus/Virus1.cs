@@ -18,9 +18,9 @@ public class Virus1 : VirusBase {
     }
 
     private void Update() {
-        if (target != null) {
-            Pathfind();
-        }
+
+        Pathfind();
+
     }
 
     /* 
@@ -48,6 +48,7 @@ public class Virus1 : VirusBase {
 
             if (distance <= 0) {
                 Destroy(gameObject);
+                //gameObject.SetActive(false);
                 // TODO: Deal damage to This PC
             }
         }

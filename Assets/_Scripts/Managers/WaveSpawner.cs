@@ -76,18 +76,18 @@ public class WaveSpawner : MonoBehaviour {
         Transform chosenSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(enemy, chosenSpawnPoint.position, chosenSpawnPoint.rotation);
 
-        Debug.Log("Spawning shitters");
+        //Debug.Log("Spawning shitters");
     }
 
     private void WaveCompleted() {
-        Debug.Log("Wave Completed");
+        //Debug.Log("Wave Completed");
 
         GameManager.Instance.ChangeState(GameState.PreparationState);
         waveCountdown = timeBetweenWaves;
 
         if (nextWave + 1 > waves.Length - 1) {
             nextWave = 0;
-            Debug.Log("All waves done. starting it all over again :)");
+            //Debug.Log("All waves done. starting it all over again :)");
         }
         else {
             nextWave++;

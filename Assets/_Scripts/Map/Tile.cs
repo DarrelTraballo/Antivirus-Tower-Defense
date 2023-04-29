@@ -11,12 +11,10 @@ public class Tile : MonoBehaviour {
     private Vector2 mousePos;
 
     private UnitManager unitManager;
-    private GameManager gameManager;
     private GridManager gridManager;
 
     private void Awake() {
         unitManager = UnitManager.Instance;
-        gameManager = GameManager.Instance;
         gridManager = GridManager.Instance;
     }
 
@@ -41,45 +39,47 @@ public class Tile : MonoBehaviour {
             occupiedUnit.transform.position = mousePos;
         }
     }
+    // when mouse clicks and drags over an antivirus unit
     private void OnMouseDown() {
         //if (gameManager.state != GameState.PreparationState) return;
         mousePos = GetMousePosition();
         // if clicked on an occupied tile
         if (occupiedUnit != null) {
             dragging = true;
-            //Debug.Log(occupiedUnit);
             if (occupiedUnit.unitType == UnitType.ThisPC || occupiedUnit.unitType == UnitType.Antivirus) {
                 unitManager.SetSelectedAntivirus(occupiedUnit);
+
             }
         }
 
         // if clicked on an empty tile
         else {
-            //unitManager.BuildTurret();
+            unitManager.BuildTurret();
         }
     }
 
+    // when mouse stops dragging an antivirus unit ; when player lets go of left click
     private void OnMouseUp() {
-        mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (occupiedUnit != null) {
-            if (unitManager.selectedAntivirus != null) {
-                // check if out of bounds
-                bool isMouseOutOfBounds = mousePos.y < 0 - (GridManager.Instance.tileSize / 2) || mousePos.y > GridManager.Instance.Height || mousePos.x < 0 - (GridManager.Instance.tileSize / 2) || mousePos.x > GridManager.Instance.Width;
+        mousePos = GetMousePosition();
+        var targetTile = gridManager.GetTileAtPosition(mousePos);
 
-                if (isMouseOutOfBounds) {
-                    SetUnit(unitManager.selectedAntivirus, occupiedUnit.occupiedTile);
-                    unitManager.SetSelectedAntivirus(null);
-                    dragging = false;
-                    return;
-                }
-                // move the unit
-                var droppedTile = gridManager.GetTileAtPosition(mousePos);
-                SetUnit(unitManager.selectedAntivirus, droppedTile);
+        // checks if player is actually holding an antivirus unit
+        if (unitManager.selectedAntivirus != null) {
+            // check if out of bounds
+            bool isMouseOutOfBounds = mousePos.y < 0 - (GridManager.Instance.tileSize / 2) || mousePos.y > GridManager.Instance.Height || mousePos.x < 0 - (GridManager.Instance.tileSize / 2) || mousePos.x > GridManager.Instance.Width;
 
+            if (isMouseOutOfBounds || targetTile.occupiedUnit != null) {
+                SetUnit(unitManager.selectedAntivirus, occupiedUnit.occupiedTile);
                 unitManager.SetSelectedAntivirus(null);
                 dragging = false;
-
+                return;
             }
+            // move the unit
+            SetUnit(unitManager.selectedAntivirus, targetTile);
+
+            unitManager.SetSelectedAntivirus(null);
+            dragging = false;
+
         }
     }
     public void SetUnit(AntivirusBase unit, Tile tile) {
