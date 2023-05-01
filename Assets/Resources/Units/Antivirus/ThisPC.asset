@@ -19,3 +19,5 @@ MonoBehaviour:
   health: 500
   range: 0
   fireRate: 0
+  baseDamage: 15
+  projectilePrefab: {fileID: 0}

@@ -19,7 +19,6 @@ public class UnitManager : MonoBehaviour {
     }
 
     public void BuildAntivirus() {
-        //var turret = GetUnit(UnitType.Antivirus);
         if (SelectedAntivirusButton == null) return;
         var spawnedTurret = Instantiate(SelectedAntivirusButton.AntivirusPrefab);
         var tile = GridManager.Instance.GetTileAtPosition((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -31,9 +30,15 @@ public class UnitManager : MonoBehaviour {
 
     public void PickAntivirus(TaskBarButton taskBarButton) {
         this.SelectedAntivirusButton = taskBarButton;
+
+        Debug.Log($"picked {taskBarButton.AntivirusPrefab.name}");
+
+        //var sprite = taskBarButton.AntivirusPrefab.GetComponent<Sprite>();
+
     }
 
     public void BuyAntivirus() {
+
         SelectedAntivirusButton = null;
     }
 

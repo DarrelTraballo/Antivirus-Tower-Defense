@@ -46,11 +46,16 @@ public class Virus1 : VirusBase {
 
             transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
 
-            if (distance <= 0) {
-                Destroy(gameObject);
-                //gameObject.SetActive(false);
-                // TODO: Deal damage to This PC
+            if (distance <= 0f) {
+                //Destroy(gameObject);
+                Release();
+
+                // TODO: WORK AROUND COLLIDING CAN DEAL DAMAGE
+                // TODO: Deal damage to whatever it collides
             }
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision) {
+
     }
 }

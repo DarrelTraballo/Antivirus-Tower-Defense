@@ -14,11 +14,11 @@ public class WaveSpawner : MonoBehaviour {
     public Wave[] waves;
     public Transform[] spawnPoints;
     private int nextWave = 0;
-    public float timeBetweenWaves = 2f;
-    public float waveCountdown;
+    private float timeBetweenWaves = 2f;
+    private float waveCountdown;
 
     private float searchCountdown = 1f;
-    private string virusTag = "Virus";
+    private readonly string virusTag = "Virus";
 
     [SerializeField]
     private Transform parent;
@@ -32,6 +32,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private void Start() {
         waveCountdown = timeBetweenWaves;
+
 
         if (spawnPoints.Length == 0) {
             Debug.LogError("No Spawn Points set.");
@@ -60,6 +61,7 @@ public class WaveSpawner : MonoBehaviour {
         }
         else {
             waveCountdown -= Time.deltaTime;
+            waveCountdown = Mathf.Clamp(waveCountdown, 0, Mathf.Infinity);
         }
     }
 
@@ -78,7 +80,13 @@ public class WaveSpawner : MonoBehaviour {
 
     private void SpawnEnemy(Transform enemy) {
         Transform chosenSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(enemy, chosenSpawnPoint.position, chosenSpawnPoint.rotation, parent);
+
+        GameObject enemyGO = ObjectPool.Instance.GetPooledObject("Virus");
+        if (enemyGO != null) {
+            enemyGO.transform.SetPositionAndRotation(chosenSpawnPoint.position, chosenSpawnPoint.rotation);
+            //enemyGO.transform.parent = parent;
+            enemyGO.SetActive(true);
+        }
 
         //Debug.Log("Spawning shitters");
     }

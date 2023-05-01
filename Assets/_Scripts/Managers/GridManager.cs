@@ -19,10 +19,6 @@ public class GridManager : MonoBehaviour {
     private Vector2 offset;
     public readonly float tileSize = 1f;
 
-    private Dictionary<Vector2, Tile> taskBarTiles;
-    private int taskBarWidth = 20, taskBarHeight = 1;
-    [SerializeField] private Transform taskBarArea;
-
     private GridManager() { }
 
     private void Awake() {
@@ -50,23 +46,6 @@ public class GridManager : MonoBehaviour {
         UnitManager.Instance.PlaceThisPC();
 
         GameManager.Instance.ChangeState(GameState.PreparationState);
-    }
-
-    public void GenerateTaskbarGrid() {
-        taskBarTiles = new Dictionary<Vector2, Tile>();
-        //taskBarArea.gameObject.SetActive(true);
-
-        for (int x = 0; x < taskBarWidth; x++) {
-            for (int y = 0; y < taskBarHeight; y++) {
-                var taskBarTile = Instantiate(tilePrefab, new Vector3(x, y - 2f, 0), Quaternion.identity, taskBarArea);
-                taskBarTile.name = $"Taskbar ({x}, {y})";
-
-                var isOffset = (x + y) % 2 == 1;
-                taskBarTile.Init(isOffset);
-
-                taskBarTiles[new Vector2(x, y)] = taskBarTile;
-            }
-        }
     }
 
     public Tile GetTileAtPosition(Vector2 position) {

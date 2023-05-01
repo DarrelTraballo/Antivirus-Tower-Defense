@@ -6,16 +6,18 @@ TagManager:
   tags:
   - This_PC
   - Virus
+  - Projectile
+  - PopUp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Map
   - Water
   - UI
   - Virus
   - Antivirus
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -52,12 +54,15 @@ TagManager:
   - name: UI
     uniqueID: 2482767875
     locked: 0
+  - name: Projectile
+    uniqueID: 3934079215
+    locked: 0
   - name: Antivirus
     uniqueID: 3073899885
     locked: 0
-  - name: Bullets
-    uniqueID: 3934079215
-    locked: 0
   - name: Virus
     uniqueID: 1705165665
+    locked: 0
+  - name: Map
+    uniqueID: 207410855
     locked: 0

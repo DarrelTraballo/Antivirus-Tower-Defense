@@ -11,5 +11,6 @@ public class VirusData : ScriptableObject {
 
     public float health;
     public float speed;
+    public float baseDamage;
     public Transform Target { get; private set; }
 }
