@@ -39,6 +39,7 @@ public class Virus1 : VirusBase {
     public override void SetTarget() {
         target = FindObjectOfType<ThisPC>().transform;
     }
+
     public override void Pathfind() {
         if (target != null) {
             distance = Vector2.Distance(transform.position, target.position);

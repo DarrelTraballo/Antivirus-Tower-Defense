@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour {
 
     private void Update() {
         if (!dragging) return;
+        if (GameManager.Instance.state == GameState.GameOver) return;
 
         mousePos = GetMousePosition();
 
@@ -41,7 +42,7 @@ public class Tile : MonoBehaviour {
     }
     // when mouse clicks and drags over an antivirus unit
     private void OnMouseDown() {
-        //if (gameManager.state != GameState.PreparationState) return;
+        if (GameManager.Instance.state == GameState.GameOver) return;
         mousePos = GetMousePosition();
         // if clicked on an occupied tile
         if (occupiedUnit != null) {

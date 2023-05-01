@@ -6,4 +6,10 @@ public class ThisPC : AntivirusBase {
     public override void Shoot() {
         throw new System.NotImplementedException();
     }
+
+    private void Update() {
+        if (this.health <= 0) {
+
+        }
+    }
 }

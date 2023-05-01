@@ -40,6 +40,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Update() {
+        if (GameManager.Instance.state == GameState.GameOver) return;
 
         if (GameManager.Instance.state == GameState.KillWaveState) {
             // Checks if there are any more shitters alive before continuing on to next wave

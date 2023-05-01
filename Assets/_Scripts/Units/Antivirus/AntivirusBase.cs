@@ -51,7 +51,10 @@ public abstract class AntivirusBase : MonoBehaviour {
         healthBar.fillAmount = health / startHealth;
 
         if (health <= 0) {
-            Die();
+            if (this is ThisPC) {
+                GameManager.Instance.ChangeState(GameState.GameOver);
+            }
+            else Die();
         }
     }
 

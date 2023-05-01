@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
     public GameState state;
+    private static bool isGameOver = false;
+    [SerializeField] private GameObject gameOverUI;
 
     private GameManager() { }
 
@@ -25,10 +27,15 @@ public class GameManager : MonoBehaviour {
                 GridManager.Instance.GenerateGrid();
                 break;
             case GameState.PreparationState:
+                // TODO: reset this pc hp or something
                 break;
             case GameState.WaveStartState:
                 break;
             case GameState.KillWaveState:
+                break;
+            case GameState.GameOver:
+                // display gameover ui or something
+                gameOverUI.SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -41,4 +48,5 @@ public enum GameState {
     PreparationState,       // player sets up shit
     WaveStartState,         // enemies start spawning
     KillWaveState,          // player kills enemies
+    GameOver,               // this pc is dead
 }
