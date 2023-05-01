@@ -770,7 +770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668677553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.135459, y: 1.6397346, z: 0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -908,7 +908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779577400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.135459, y: 1.6397346, z: 0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917791363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.364541, y: 1.3602654, z: -0.071909174}
+  m_LocalPosition: {x: 9.5, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1305,7 +1305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102492516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.135459, y: -1.6397346, z: -0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1431,7 +1431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312187294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.135459, y: -1.6397346, z: -0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1806,7 +1806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883023704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.135459, y: -1.6397346, z: -0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1827,13 +1827,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Wave 1
-    enemyPrefab: {fileID: 3977317871175301716, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
+    enemyPrefabs:
+    - {fileID: 3977317871175301716, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
     count: 3
     rate: 1
   - name: Wave 2
-    enemyPrefab: {fileID: 3977317871175301716, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
-    count: 4
-    rate: 1.5
+    enemyPrefabs:
+    - {fileID: 3977317871175301716, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
+    - {fileID: 6652437510510783743, guid: feaba9a5c51aa9d4bb93d709e52e8813, type: 3}
+    count: 6
+    rate: 1
+  - name: Wave 2
+    enemyPrefabs:
+    - {fileID: 59526143986383170, guid: 85720e83eca4bb64d8532ec57e2600ae, type: 3}
+    count: 1
+    rate: 1
   spawnPoints:
   - {fileID: 825613163}
   - {fileID: 2013295984}
@@ -1862,6 +1870,14 @@ MonoBehaviour:
     amountToPool: 5
     objectToPool: {fileID: 1829818887672647395, guid: 3a215aa0cd440064890bf8959b3a9c9f, type: 3}
     shouldExpand: 1
+  - name: Popups
+    amountToPool: 5
+    objectToPool: {fileID: 6652437510510783739, guid: feaba9a5c51aa9d4bb93d709e52e8813, type: 3}
+    shouldExpand: 1
+  - name: Malware
+    amountToPool: 5
+    objectToPool: {fileID: 59526143986383180, guid: 85720e83eca4bb64d8532ec57e2600ae, type: 3}
+    shouldExpand: 0
 --- !u!1 &1933034167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,7 +2132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087340252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.135459, y: -1.6397346, z: -0.071909174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

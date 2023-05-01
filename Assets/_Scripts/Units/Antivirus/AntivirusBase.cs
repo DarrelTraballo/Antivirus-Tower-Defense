@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class AntivirusBase : MonoBehaviour {
     [HideInInspector] public Tile occupiedTile;
@@ -10,20 +11,28 @@ public abstract class AntivirusBase : MonoBehaviour {
     protected string unitName;
     [SerializeField] protected float range;
     protected float health;
+    protected float startHealth;
+    protected float healthDepletionRate;
     protected float fireRate;
     protected float fireCooldown = 0f;
     [SerializeField] protected float baseDamage;
     [SerializeField] protected Transform target;
 
     protected Projectile projectilePrefab;
+    [SerializeField] protected Image healthBar;
+    [SerializeField] protected Canvas healthCanvas;
 
     private void OnEnable() {
         unitName = antivirusData.unitName;
         range = antivirusData.range;
-        health = antivirusData.health;
+        startHealth = antivirusData.health;
+        healthDepletionRate = antivirusData.healthDepletionRate;
         fireRate = antivirusData.fireRate;
         baseDamage = antivirusData.baseDamage;
         projectilePrefab = antivirusData.projectilePrefab;
+
+        healthCanvas.enabled = false;
+        health = startHealth;
     }
 
     public abstract void FindTarget();
@@ -35,8 +44,11 @@ public abstract class AntivirusBase : MonoBehaviour {
 
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
+        healthCanvas.enabled = true;
         health -= amount;
+
+        healthBar.fillAmount = health / startHealth;
 
         if (health <= 0) {
             Die();

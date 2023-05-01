@@ -6,11 +6,12 @@ public class Antivirus1 : AntivirusBase {
     [SerializeField] private Transform gun;
 
     private void Start() {
-        InvokeRepeating(nameof(FindTarget), 0f, 0.5f);
+        InvokeRepeating(nameof(FindTarget), 0f, fireRate);
     }
 
     private void Update() {
         if (target == null) return;
+        if (!target.gameObject.activeInHierarchy) return;
 
         LookAtTarget();
 
@@ -20,6 +21,9 @@ public class Antivirus1 : AntivirusBase {
         }
 
         fireCooldown -= Time.deltaTime;
+
+        healthBar.enabled = true;
+        health -= healthDepletionRate * Time.deltaTime;
     }
 
     public override void FindTarget() {
@@ -32,7 +36,6 @@ public class Antivirus1 : AntivirusBase {
 
         // finding the nearest enemy
         foreach (GameObject virus in viruses) {
-            if (virus is PopUp) return;
             float distance = Vector3.Distance(transform.position, virus.transform.position);
 
             if (distance < minDistance) {
@@ -57,12 +60,14 @@ public class Antivirus1 : AntivirusBase {
 
     // TODO: shoot
     public override void Shoot() {
+        if (target == null) return;
         GameObject projectileGO = ObjectPool.Instance.GetPooledObject("Projectile");
         if (projectileGO != null) {
             projectileGO.transform.SetPositionAndRotation(gun.position, gun.rotation);
             projectileGO.SetActive(true);
             var projectile = projectileGO.GetComponent<Projectile>();
-            projectile.FindTarget(target);
+            projectile.SetTarget(target);
+            projectile.Damage = baseDamage;
         }
     }
 }

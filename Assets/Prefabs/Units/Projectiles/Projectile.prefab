@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dc0970ca549d845b62f3e02de172b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: 8ab86b9594ba7434ea741f36a49737f7, type: 2}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 10
   distance: 0
 --- !u!58 &-7223085994407938044

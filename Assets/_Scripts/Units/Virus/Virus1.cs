@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class Virus1 : VirusBase {
 
-    //private Transform target;
     private float distance;
 
     private void Start() {
-        target = FindObjectOfType<ThisPC>().transform;
+        SetTarget();
 
         if (target != null) {
             //Debug.Log(target.transform.position);
@@ -37,6 +36,9 @@ public class Virus1 : VirusBase {
      *       
      */
 
+    public override void SetTarget() {
+        target = FindObjectOfType<ThisPC>().transform;
+    }
     public override void Pathfind() {
         if (target != null) {
             distance = Vector2.Distance(transform.position, target.position);
@@ -47,14 +49,12 @@ public class Virus1 : VirusBase {
             transform.SetPositionAndRotation(Vector2.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime), Quaternion.Euler(Vector3.forward * angle));
 
             if (distance <= 0f) {
-                //Destroy(gameObject);
-                Release();
-
-                // TODO: WORK AROUND COLLIDING CAN DEAL DAMAGE
-                // TODO: Deal damage to whatever it collides
+                DealDamage();
+                Die();
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision) {
 
     }

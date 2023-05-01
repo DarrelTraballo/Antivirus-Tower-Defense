@@ -6,7 +6,7 @@ public class WaveSpawner : MonoBehaviour {
     [System.Serializable]
     public class Wave {
         public string name;
-        public Transform enemyPrefab;
+        public Transform[] enemyPrefabs;
         public int count;
         public float rate;
     }
@@ -69,7 +69,12 @@ public class WaveSpawner : MonoBehaviour {
         GameManager.Instance.ChangeState(GameState.WaveStartState);
 
         for (int i = 0; i < wave.count; i++) {
-            SpawnEnemy(wave.enemyPrefab);
+            var selectedVirus = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
+
+            if (selectedVirus.CompareTag("PopUp")) SpawnPopUp();
+
+            else SpawnEnemy();
+
             yield return new WaitForSeconds(1f / wave.rate);
         }
 
@@ -78,13 +83,25 @@ public class WaveSpawner : MonoBehaviour {
         yield break;
     }
 
-    private void SpawnEnemy(Transform enemy) {
+    private void SpawnPopUp() {
+        GameObject popUp = ObjectPool.Instance.GetPooledObject("PopUp");
+        if (popUp != null) {
+            float minX = 2f;
+            float minY = 2f;
+            float maxX = 15f;
+            float maxY = 7f;
+
+            popUp.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            popUp.SetActive(true);
+        }
+    }
+
+    private void SpawnEnemy() {
         Transform chosenSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         GameObject enemyGO = ObjectPool.Instance.GetPooledObject("Virus");
         if (enemyGO != null) {
             enemyGO.transform.SetPositionAndRotation(chosenSpawnPoint.position, chosenSpawnPoint.rotation);
-            //enemyGO.transform.parent = parent;
             enemyGO.SetActive(true);
         }
 

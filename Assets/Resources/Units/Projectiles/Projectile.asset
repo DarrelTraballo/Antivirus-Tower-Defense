@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5f5c46293ce964d94d9e8221a107de, type: 3}
-  m_Name: Virus1
+  m_Script: {fileID: 11500000, guid: cfa5025b557968f46b929c8900c8f635, type: 3}
+  m_Name: Projectile
   m_EditorClassIdentifier: 
-  unitName: Virus1
-  unitDescription: 
-  unitType: 2
-  unitPrefab: {fileID: 3977317871175301717, guid: a613bfced9e850b4da2f74a07156603e, type: 3}
-  health: 100
-  speed: 2
-  baseDamage: 50
+  projectilePrefab: {fileID: 1232221649374055215, guid: 3a215aa0cd440064890bf8959b3a9c9f, type: 3}
+  projectileSpeed: 20
+  distance: 0

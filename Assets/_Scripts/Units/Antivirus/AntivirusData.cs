@@ -14,4 +14,6 @@ public class AntivirusData : ScriptableObject {
     public float fireRate;
     public float baseDamage;
     public Projectile projectilePrefab;
+
+    public float healthDepletionRate;
 }
